@@ -1,0 +1,57 @@
+*trap.txt*  lightweight neovim plugin for quick note-taking
+
+==============================================================================
+introduction                                                     *trap*
+
+trap is a zero-configuration neovim plugin for quick, temporary notes.
+notes are stored in a persistent file that auto-clears after 7 days.
+
+==============================================================================
+commands                                                         *trap-commands*
+
+:TrapToggle                                                      *:TrapToggle*
+    toggle the trap window - opens if closed, closes if open.
+    ideal for binding to a single key.
+    
+    when opening: creates a floating window with the trap file
+    when closing: saves content automatically before closing
+
+:TrapClear                                                       *:TrapClear*
+    manually clear the trap file contents.
+
+==============================================================================
+behavior                                                         *trap-behavior*
+
+- content auto-clears after 7 days of inactivity (checked on neovim startup)
+- `:TrapOpen` creates the trap file if it doesn't exist
+- floating window appears without disrupting your current editor layout
+- no configuration needed - it just works
+
+==============================================================================
+dependencies                                                     *trap-dependencies*
+
+trap requires plenary.nvim for the floating window functionality.
+make sure plenary.nvim is installed with your package manager.
+
+==============================================================================
+location                                                         *trap-location*
+
+the trap file is stored at:
+    - `stdpath("data")/trap/trap.md`
+
+typically:
+    - linux/macos: ~/.local/share/nvim/trap/trap.md
+    - windows: ~/AppData/Local/nvim-data/trap/trap.md
+
+==============================================================================
+theming                                                          *trap-theming*
+
+trap automatically adapts to your color theme by directly using colors from your active colorscheme:
+
+    - TrapNormal: content area (matches Normal colors)
+    - TrapBorder: window border (matches background color of Normal)
+    - TrapTitle: window title (bold text with Normal colors)
+
+highlights are automatically refreshed when the colorscheme changes.
+
+==============================================================================
